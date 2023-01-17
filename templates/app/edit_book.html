@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+
+{% block main_block %}
+
+<h5 class="bg-light border border-secondary rounded mx-auto mt-2 p-1 px-3">
+    Update Book    
+</h5>
+
+<form action="" method="POST" class="mt-5" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-secondary table-borderless w-25 m-auto rounded p-5">
+        <caption>Edit Book</caption>
+        <input type="hidden" name="book_id" value="{{book_id}}">
+        {{form}}
+        
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Update">
+            </td>
+        </tr>
+        
+    </table>
+</form>
+
+{% endblock %}

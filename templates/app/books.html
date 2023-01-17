@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+
+{% block main_block %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/books.css' %}">
+
+<h5 class="bg-light border border-secondary rounded mx-auto mt-2 p-1 px-3">
+    Books
+    <small><a href="/app/new" class=" float-right">+ New Book</a></small>    
+</h5>
+
+
+<table class="table m-auto">
+    <thead>
+        <tr>
+            <th>Sr</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Book Cover</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{forloop.counter}}.</td>
+                <td><a href="/app/edit/?book_id={{book.id}}">{{book.title}}</a></td>
+                <td>{{book.author}}</td>
+                <td><img src="/static/uploads/{{book.cover.url}}" alt="" height="60px"></td>
+                <td>{{book.price}}</td>
+                <td>
+                    <a href="/app/del/?book_id={{book.id}}">
+                        <img src="{% static 'images/del.png' %}" height="40px" alt="">
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
